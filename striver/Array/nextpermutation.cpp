@@ -23,3 +23,12 @@ public:
         reverse(A.begin()+ ind+1, A.end());
     }
 };
+
+
+/*
+Finding breakpoint: O(n)
+Finding next greater element: O(n)
+Reversing suffix: O(n)
+Overall: O(3n) ~ O(n)
+Space: O(1)
+*/
