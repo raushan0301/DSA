@@ -21,3 +21,5 @@ public:
         return ans;
     }
 };
+
+// tc O(n^2)  
