@@ -104,13 +104,18 @@ Node* deleteHead(Node* head){
          return head;
           }
         
+Node* insertBeforeHead(Node* head, int val){
+    Node* newHead = new Node(val, head, nullptr);
+    head->back = newHead;
+    return newHead;
+}
 
 
 
     int main (){
         vector<int> arr = {1,2,3,4,5};
         Node* head = convertarr2Dll(arr);
-        head =deleteKthElement(head,4);
+        head =insertBeforeHead(head,10);
         print(head);
         return 0;
     }
