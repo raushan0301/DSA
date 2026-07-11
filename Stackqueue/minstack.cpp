@@ -1,77 +1,52 @@
-
-// Class to implement Minimum Stack
 class MinStack {
-private:
-  // Initialize a stack
-  stack<int> st;
-  // To store the minimum value
-  int mini;
+
+        stack<long long>st; 
+        long long mini;
 
 public:
-  // Empty Constructor
-  MinStack() {}
-
-  // Method to push a value in stack
-  void push(int value) {
-
-    // If stack is empty
-    if (st.empty()) {
-      // Update the minimum value
-      mini = value;
-
-      // Push current value as minimum
-      st.push(value);
-      return;
+    MinStack() {
+    
     }
-
-    // If the value is greater than the minimum
-    if (value > mini) {
-      st.push(value);
-    } else {
-      // Add the modified value to stack
-      st.push(2 * value - mini);
-      // Update the minimum
-      mini = value;
+    void push(int value) {
+        if(st.empty()) {
+            mini = value;
+            st.push(value);
+        }
+        else if (value >= mini) st.push(value);
+        else {st.push(2LL*value - mini);
+        mini = value;
+        }
     }
-  }
-
-  // Method to pop a value from stack
-  void pop() {
-    // Base case
-    if (st.empty())
-      return;
-
-    // Get the top
-    int x = st.top();
-    st.pop(); // Pop operation
-
-    // If the modified value was added to stack
-    if (x < mini) {
-      // Update the minimum
-      mini = 2 * mini - x;
+    
+    void pop() {
+        if (st.empty()) return;
+         long long x = st.top();
+         st.pop();
+        if (x < mini){
+            mini = 2LL * mini - x;
+         }
     }
-  }
-
-  // Method to get the top of stack
-  int top() {
-    // Base case
-    if (st.empty())
-      return -1;
-
-    // Get the top
-    int x = st.top();
-
-    // Returnn top if minimum is less than the top
-    if (mini < x)
-      return x;
-
-    // Otherwise return mini
-    return mini;
-  }
-
-  // Method to get the minimum in stack
-  int getMin() {
-    // Return the minimum
-    return mini;
-  }
+    
+    int top() {
+        if(st.empty()) return -1;
+        long long x = st.top();
+        if (x >= mini) return x;
+        else {
+        return mini;
+        }
+    }
+    
+    int getMin() {
+        return mini;
+    }
+    
 };
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack* obj = new MinStack();
+ * obj->push(value);
+ * obj->pop();
+ * int param_3 = obj->top();
+ * int param_4 = obj->getMin();
+ */
